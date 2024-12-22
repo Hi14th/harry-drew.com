@@ -1,44 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Harry Drew's Retro Site</title>
+  <meta charset="UTF-8" />
+  <title>Harry Drew's Retro One-Page Site</title>
   <style>
+    /* ----- GLOBAL STYLES ----- */
     body {
       background-color: #fafacd; /* 90s pastel vibe */
       font-family: Arial, sans-serif;
-      color: #000;
       margin: 0;
       padding: 0;
     }
-
     .header {
       background-color: #ff69b4;
       color: #fff;
       text-align: center;
       padding: 10px;
     }
-
-    /* Example of a blinking effect using CSS animations */
     .blinking {
       animation: blink 1s steps(1, start) infinite;
     }
-
     @keyframes blink {
       50% { opacity: 0; }
     }
-
-    table {
-      margin: 20px auto;
-      border: 1px solid #000;
-      border-collapse: collapse;
-    }
-
-    td {
-      border: 1px dashed #000;
-      padding: 10px;
-    }
-
     .marquee {
       font-weight: bold;
       background: #008080;
@@ -46,35 +30,153 @@
       padding: 5px;
       margin-top: 5px;
     }
+    .nav-table {
+      margin: 20px auto;
+      border: 1px solid #000;
+      border-collapse: collapse;
+    }
+    .nav-table td {
+      border: 1px dashed #000;
+      padding: 10px;
+    }
+    a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+    }
+    a:hover {
+      color: #ff69b4;
+    }
+    .section-title {
+      margin-top: 40px;
+      text-align: center;
+      text-decoration: underline;
+    }
+    .section-content {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 20px;
+      line-height: 1.6;
+      text-align: left;
+    }
+    .footer {
+      text-align: center;
+      margin: 40px 0 20px 0;
+      font-size: 0.9em;
+    }
+    .return-top {
+      display: block;
+      text-align: center;
+      margin: 20px 0;
+      font-style: italic;
+    }
   </style>
 </head>
-<body>
 
+<body>
+  <!-- HEADER -->
   <div class="header">
-    <h1 class="blinking">Welcome to Harry Drew's Retro Page!</h1>
+    <h1 class="blinking">Welcome to Harry Drew's Retro One-Page Site!</h1>
   </div>
 
-  <!-- Vintage marquee usage -->
+  <!-- MARQUEE SCROLL -->
   <marquee class="marquee" behavior="scroll" direction="left" scrollamount="5">
-    Scrolling text! 90s vibes!
+    Step right up for some classic 90s web magic!
   </marquee>
 
-  <table>
+  <!-- NAVIGATION LINKS (ANCHORS) -->
+  <table class="nav-table">
     <tr>
-      <td><a href="about.html">About Harry</a></td>
-      <td><a href="photos.html">Retro Photos</a></td>
-      <td><a href="contact.html">Contact</a></td>
+      <td><a href="#about">About Harry</a></td>
+      <td><a href="#photos">Retro Photos</a></td>
+      <td><a href="#contact">Contact</a></td>
     </tr>
     <tr>
-      <td><a href="music.html">Old School Music</a></td>
-      <td><a href="games.html">Classic Games</a></td>
-      <td><a href="guestbook.html">Sign the Guestbook</a></td>
+      <td><a href="#starwars">Star Wars</a></td>
+      <td><a href="#retro">Retro Favorites</a></td>
+      <td><a href="#guestbook">Sign the Guestbook</a></td>
     </tr>
   </table>
 
-  <p style="text-align: center;">
-    <em>Created with love for the 90s aesthetic. All rights reserved.</em>
-  </p>
+  <!-- ABOUT SECTION -->
+  <h2 id="about" class="section-title">About Harry</h2>
+  <div class="section-content">
+    <p>Hello there! I’m Harry Drew, and I’m obsessed with all things retro—especially the 90s internet aesthetic. 
+       I love simple HTML layouts, neon colors, and using tables for design 
+       (even though it’s “deprecated,” it sure brings back memories!).
+    </p>
+  </div>
+  <a href="#top" class="return-top">[Return to Top]</a>
 
+  <!-- PHOTOS SECTION -->
+  <h2 id="photos" class="section-title">Retro Photos</h2>
+  <div class="section-content">
+    <p>Here’s a glimpse of some vintage snapshots (imagine them in <strong>640x480 resolution</strong>!):</p>
+    <ul>
+      <li>My first computer: a <em>Commodore 64</em></li>
+      <li>The family’s <em>dial-up modem</em> (14.4kbps!)</li>
+      <li>Polaroid pictures from the early 90s</li>
+    </ul>
+    <p><em>(In a real site, you’d insert actual images here!)</em></p>
+  </div>
+  <a href="#top" class="return-top">[Return to Top]</a>
+
+  <!-- CONTACT SECTION -->
+  <h2 id="contact" class="section-title">Contact</h2>
+  <div class="section-content">
+    <p>If you’d like to reach out, drop me a line at:
+       <strong>harrydrew<span style="font-style:italic">@</span>retro.com</strong>
+    </p>
+    <p>Or if we’re going real old-school, mail me at 1234 Nostalgia Ln., 90s Town, USA.</p>
+  </div>
+  <a href="#top" class="return-top">[Return to Top]</a>
+
+  <!-- STAR WARS SECTION -->
+  <h2 id="starwars" class="section-title">Star Wars</h2>
+  <div class="section-content">
+    <p>We can’t talk about retro coolness without mentioning 
+       <strong>Star Wars</strong>—specifically the original trilogy from 1977 to 1983!
+    </p>
+    <ul>
+      <li><strong>Episode IV: A New Hope</strong> (1977)</li>
+      <li><strong>Episode V: The Empire Strikes Back</strong> (1980)</li>
+      <li><strong>Episode VI: Return of the Jedi</strong> (1983)</li>
+    </ul>
+    <p>These films have inspired generations of fans and shaped pop culture forever. 
+       <em>Han shot first, right?!</em>
+    </p>
+  </div>
+  <a href="#top" class="return-top">[Return to Top]</a>
+
+  <!-- RETRO FAVORITES SECTION -->
+  <h2 id="retro" class="section-title">Retro Favorites</h2>
+  <div class="section-content">
+    <p>My personal picks for a blast from the past:</p>
+    <ul>
+      <li><strong>Video Games:</strong> Doom (1993), The Legend of Zelda: A Link to the Past (1991), Street Fighter II (1991)</li>
+      <li><strong>TV Shows:</strong> The X-Files, Fresh Prince of Bel-Air, and Saved by the Bell</li>
+      <li><strong>Music:</strong> Cassette tapes galore! Nirvana, Spice Girls, Boyz II Men</li>
+      <li><strong>Web Browsers:</strong> Netscape Navigator, Internet Explorer 3, and Mosaic</li>
+    </ul>
+    <p>Nothing beats the nostalgia of pixelated graphics, chiptune music, and CRT monitors!</p>
+  </div>
+  <a href="#top" class="return-top">[Return to Top]</a>
+
+  <!-- GUESTBOOK SECTION -->
+  <h2 id="guestbook" class="section-title">Sign the Guestbook</h2>
+  <div class="section-content">
+    <p>Remember when every website had a guestbook? Relive the magic by “signing” your name!</p>
+    <p>
+      <em>If this were a real site, you might embed a simple form here that sends data 
+      to a server or a third-party form handling service. For now, feel free to 
+      pretend you just scrawled your name in HTML!</em>
+    </p>
+  </div>
+  <a href="#top" class="return-top">[Return to Top]</a>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>© 2024 Harry Drew. Created for 90s web enthusiasts everywhere.</p>
+  </div>
 </body>
 </html>
