@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Distance to New York City</title>
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-sA+4ZazKz9nN40H1eNn1Mx6k8CmOC2ryJ1fSAAZ2Il4="
+    crossorigin=""
+  />
+  <style>
+    /* Basic styling for the map */
+    #map {
+      height: 600px;
+      width: 100%;
+      margin: 20px 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+    h1, p {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Distance to New York City</h1>
+  <p id="distance-info">Fetching location data...</p>
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-o8NeB1Q1xKtc9d4GeYs0AUHipk9N4pE93Hb0hc3h+kM="
+    crossorigin=""
+  ></script>
+
+  <script>
+    // Coordinates for New York City (Manhattan)
+    const nycLat = 40.7128;
+    const nycLng = -74.0060;
+
+    // Haversine formula to calculate distance between two coordinates in kilometers
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+      const R = 6371; // Earth's radius in km
+      const dLat = (lat2 - lat1) * (Math.PI / 180);
+      const dLon = (lon2 - lon1) * (Math.PI / 180);
+      const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * (Math.PI / 180)) *
+          Math.cos(lat2 * (Math.PI / 180)) *
+          Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return R * c; // distance in km
+    }
+
+    // Initialize Leaflet map (centered roughly in the US as a fallback)
+    const map = L.map('map').setView([39.8283, -98.5795], 4);
+
+    // Add a tile layer (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Fetch user's location from ipapi.co
+    fetch('https://ipapi.co/json/')
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          document.getElementById('distance-info').innerText =
+            'Could not retrieve your location via IP.';
+          return;
+        }
+
+        const userLat = parseFloat(data.latitude);
+        const userLng = parseFloat(data.longitude);
+
+        // Calculate distance from NYC
+        const distanceKm = calculateDistance(userLat, userLng, nycLat, nycLng);
+        const distanceMiles = (distanceKm * 0.621371).toFixed(2);
+        const distanceText = `You are approximately ${distanceKm.toFixed(
+          2
+        )} km (${distanceMiles} miles) away from New York City.`;
+
+        document.getElementById('distance-info').innerText = distanceText;
+
+        // Set map view to user's location
+        map.setView([userLat, userLng], 5);
+
+        // Add marker for user's location
+        const userMarker = L.marker([userLat, userLng]).addTo(map);
+        userMarker.bindPopup("You're here").openPopup();
+
+        // Add marker for NYC
+        const nycMarker = L.marker([nycLat, nycLng]).addTo(map);
+        nycMarker.bindPopup("New York City").openPopup();
+      })
+      .catch(error => {
+        console.error(error);
+        document.getElementById('distance-info').innerText =
+          'Error retrieving IP location data.';
+      });
+  </script>
+</body>
+</html>
