@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Harry Drew's Retro Site</title>
+  <style>
+    body {
+      background-color: #fafacd; /* 90s pastel vibe */
+      font-family: Arial, sans-serif;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #ff69b4;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    /* Example of a blinking effect using CSS animations */
+    .blinking {
+      animation: blink 1s steps(1, start) infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    table {
+      margin: 20px auto;
+      border: 1px solid #000;
+      border-collapse: collapse;
+    }
+
+    td {
+      border: 1px dashed #000;
+      padding: 10px;
+    }
+
+    .marquee {
+      font-weight: bold;
+      background: #008080;
+      color: #fff;
+      padding: 5px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1 class="blinking">Welcome to Harry Drew's Retro Page!</h1>
+  </div>
+
+  <!-- Vintage marquee usage -->
+  <marquee class="marquee" behavior="scroll" direction="left" scrollamount="5">
+    Scrolling text! 90s vibes!
+  </marquee>
+
+  <table>
+    <tr>
+      <td><a href="about.html">About Harry</a></td>
+      <td><a href="photos.html">Retro Photos</a></td>
+      <td><a href="contact.html">Contact</a></td>
+    </tr>
+    <tr>
+      <td><a href="music.html">Old School Music</a></td>
+      <td><a href="games.html">Classic Games</a></td>
+      <td><a href="guestbook.html">Sign the Guestbook</a></td>
+    </tr>
+  </table>
+
+  <p style="text-align: center;">
+    <em>Created with love for the 90s aesthetic. All rights reserved.</em>
+  </p>
+
+</body>
+</html>
